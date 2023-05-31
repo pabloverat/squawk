@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="navbar">
-      <img src="{{ url_for('static', filename='img/squawk_long.png') }}" alt="Squawk Logo" class="logo">
+      <a href="{{url_for('home')}}"><img src="{{ url_for('static', filename='img/squawk_long.png') }}" alt="Squawk Logo" class="logo"></a>
       <a href="{{ url_for('user', user_id=user_id) }}"><button class="login-button">My Profile</button></a>
     </div>
     <div class="board">
@@ -18,14 +18,17 @@
         </h4>
         <p> {{squawk.content}} </p>
         <a href="{{ url_for('comment', is_reply_to=squawk.squawk_id) }}"><button id="{{squawk.squawk_id}}">Comment</button></a>
+        <a href="{{ url_for('thread', squawk_id=squawk.squawk_id) }}"><button id="{{squawk.squawk_id}}">View Thread</button></a>
       </div>
       {% for thread, t_user in thread_info %}
       <div class="thread">
         <div class="comment">
           <p class="username">
-            <a href="{{url_for('user', user_id=thread.user_id)}}"> {{t_user}} </a> 
+            <a href="{{url_for('user', user_id=thread.user_id)}}"> {{t_user}} </a>
           </p>
           <p> {{thread.content}} </p>
+          <a href="{{ url_for('comment', is_reply_to=thread.squawk_id) }}"><button id="{{thread.squawk_id}}">Comment</button></a>
+          <a href="{{ url_for('thread', squawk_id=thread.squawk_id) }}"><button id="{{thread.squawk_id}}">View Thread</button></a>
         </div>
         
       </div>

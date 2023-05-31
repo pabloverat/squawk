@@ -5,13 +5,18 @@
     <title> New Squawk </title>
 </head>
 <body>
-
-    <form action="squawk" method="post">
-        <input id="content" type="text" placeholder="Your Squawk" value="{{request.form.content }}">
-        <input id="is_reply_to" type="hidden" value="{{is_reply_to}}"/>
-        <input type="submit" value="Post Squawk">
+  <div class="navbar">
+    <a href="{{url_for('home')}}"><img src="{{ url_for('static', filename='img/squawk_long.png') }}" alt="Squawk Logo" class="logo"></a>
+    <a href="{{ url_for('user', user_id=user_id) }}"><button class="login-button">My Profile</button></a>
+  </div>
+  <div class="container">
+    <form action="{{url_for('home')}}" method="POST">
+      <input id="content" type="text" placeholder="Your Squawk" value="{{request.form.content }}">
+      <input id="is_reply_to" type="hidden" value="{{is_reply_to}}"/>
+      <input type="submit" value="Post Squawk">
     </form>
   <form>
-    <input type="button" value="Discard Squawk">
+    <input type="button" value="Discard">
   </form>
+  </div>
 </body>

@@ -74,17 +74,17 @@ a { color: #2660A4 }
   transition: background-color 0.2s ease;
 }
 
-.logo {
-  height: 30px;
-  margin-left: 10px;
-  margin-right: auto;
-}
-
 .navbar {
   background-color: #206252;
   display: flex;
   justify-content: flex-end;
   padding: 10px;
+}
+
+.navbar .logo {
+  float: left;
+  height: 30px;
+  margin-left: 10px;
 }
 
 .navbar button {

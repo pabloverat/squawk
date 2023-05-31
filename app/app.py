@@ -1,3 +1,4 @@
+import admin_controller
 import squawk_controller
 import user_controller
 from bl.user_service import UserService
@@ -12,7 +13,8 @@ app.add_url_rule('/home', view_func=user_controller.home, methods=["GET"])
 app.add_url_rule('/user/<int:user_id>', view_func=user_controller.user, methods=["GET"])
 app.add_url_rule('/new', view_func=squawk_controller.new, methods=["POST"])
 app.add_url_rule('/comment/<int:is_reply_to>', view_func=squawk_controller.comment, methods=["GET", "POST"])
-
+app.add_url_rule('/thread/<int:squawk_id>', view_func=squawk_controller.thread, methods=["GET", "POST"])
+app.add_url_rule('/admin', view_func=admin_controller.admin, methods=["GET", "POST"])
 
 @app.route('/')
 def index():

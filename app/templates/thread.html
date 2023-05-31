@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='squawk_basic.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='squawk_render.css') }}" />
+    <title>Squawk</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="{{url_for('home')}}"><img src="{{ url_for('static', filename='img/squawk_long.png') }}" alt="Squawk Logo" class="logo"></a>
+      <a href="{{ url_for('user', user_id=user_id) }}"><button class="login-button">My Profile</button></a>
+    </div>
+    <div class="board">
+      <div class="squawk">
+        <h4>
+          <a href="{{url_for('user', user_id=squawk_info[0].user_id)}}"> {{squawk_info[1]}} </a> 
+        </h4>
+        <p> {{squawk_info[0].content}} </p>
+        <a href="{{ url_for('comment', is_reply_to=squawk_info[0].squawk_id) }}"><button id="{{squawk_info[0].squawk_id}}">Comment</button></a>
+      </div>
+      {% for thread, t_user in thread_info %}
+      <div class="thread">
+        <div class="comment">
+          <p class="username">
+            <a href="{{url_for('user', user_id=thread.user_id)}}"> {{t_user}} </a> 
+          </p>
+          <p> {{thread.content}} </p>
+          <a href="{{ url_for('comment', is_reply_to=thread.squawk_id) }}"><button id="{{thread.squawk_id}}">Comment</button></a>
+          <a href="{{ url_for('thread', squawk_id=thread.squawk_id) }}"><button id="{{thread.squawk_id}}">View Thread</button></a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
