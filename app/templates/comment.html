@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> New Comment </title>
+</head>
+<body>
+    <form action="squawk" method="post">
+        <input id="content" type="text" placeholder="Your Squawk" value="{{request.form.content }}">
+        <input id="is_reply_to" type="hidden" value="{{is_reply_to}}"/>
+        <input type="submit" value="Post Squawk">
+    </form>
+  <form>
+    <input type="button" value="Discard Squawk">
+  </form>
+</body>

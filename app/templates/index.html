@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='squawk_basic.css') }}" />
+    <title>Welcome to Squawk!</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="{{ url_for('static', filename='img/squawk_long.png') }}" alt="Squawk Logo" class="logo">
+      <button class="login-button"><a href="{{url_for('login')}}">Login</a></button>
+    </div>
+    <div class="main-header">
+      <h1>No time for silence!</h1>
+      <p>Connect • Share • Squawk</p>
+      <br>
+      <button class="signup-button">
+        <a href="{{url_for('signup')}}">Squawk Now!</a>
+      </button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+Aquí van los DAO con las funciones CRUD (create, get, update, delete)
+
+- squawk
+- user
+- event

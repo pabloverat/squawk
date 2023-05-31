@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='squawk_basic.css') }}" />
+    <title>Squawk  |  Join the Squawking!</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="{{ url_for('static', filename='img/squawk_long.png') }}" alt="Squawk Logo" class="logo">
+    </div>
+    <div class="container">
+      <h1>Join the Squawking!</h1>
+      <br>
+      <form action="{{url_for('signup')}}" method="POST">
+        <table>
+          <tr>
+            <td>Username</td>
+            <td><input id="username" name="username" type="text" placeholder="Username"></td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td><input id="password" name="password" type="password" placeholder="Password"></td>
+          </tr>
+          <tr>
+            <td>Confirm Password</td>
+            <td><input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password"></td>
+          </tr>
+          <tr><td><br><br></td></tr>
+          <tr><td><input class="signup-button" type="submit" value="Register"></td></tr>
+        </table>
+      </form>
+      {% if error %}
+        <p class="error" value="error"><strong>Error:</strong> {{ error }} </p>
+      {% endif %}
+    </div>
+  </body>
+</html>

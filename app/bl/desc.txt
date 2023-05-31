@@ -1,0 +1,10 @@
+Aquí van los models y los services
+
+-squawk_model
+-squawk_service
+-user_model
+-user_service
+-event_model
+-event_service
+-thread_model
+-thread_service

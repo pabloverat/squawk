@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='squawk_basic.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='squawk_render.css') }}" />
+    <title>My Profile</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="{{ url_for('static', filename='img/squawk_long.png') }}" alt="Squawk Logo" class="logo">
+      <button class="login-button">My Profile</button>
+    </div>
+    <h1>{{username}}</h1>
+    </div>
+    <hr>
+    <div class="board">
+      {% for squawk, user, thread_info in squawks %}
+      <div class="squawk">
+        <h4>
+          <a href="{{url_for('user', user_id=squawk.user_id)}}"> {{user}} </a> 
+        </h4>
+        <p> {{squawk.content}} </p>
+        <a href="{{ url_for('comment', is_reply_to=squawk.squawk_id) }}"><button id="{{squawk.squawk_id}}">Comment</button></a>
+      </div>
+      {% for thread, t_user in thread_info %}
+      <div class="thread">
+        <div class="comment">
+          <p class="username">
+            <a href="{{url_for('user', user_id=thread.user_id)}}"> {{t_user}} </a> 
+          </p>
+          <p> {{thread.content}} </p>
+        </div>
+        
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+    <hr>
+  </body>
+</html>
