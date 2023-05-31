@@ -6,25 +6,16 @@
   </head>
   <body>
     <div class="navbar">
-      <img src="img/squawk_long.png" alt="Squawk Logo" class="logo">
+      <img src="{{ url_for('static', filename='img/squawk_long.png') }}" alt="Squawk Logo" class="logo">
     </div>
     <div class="container">
       <div class="box">
         <h2>Squawk User Home</h2>
-        <button class="bordered-button"><a href="{{url_for('home')}}">Go</a></button>
+        <a href="{{url_for('home')}}"><button class="bordered-button">Go</button></a>
       </div>
       <div class="box">
         <h2>Event Dashboard</h2>
-        <button class="bordered-button"><a href="{{url_for('dashboard')}}">Go</a></button>
+        <a href="{{url_for('home')}}"><button class="bordered-button">Go</button></a>
       </div>
     </div>
 </html>
-<!-- html>
-  <head>
-    <title>Admin</title>
-  </head>
-  <body>
-    <a href="{{url_for('dashboard')}}">Event dashboard</a>
-    <a href="{{url_for('home')}}">Home page</a>
-  </body>
-</html -->

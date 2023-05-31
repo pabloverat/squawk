@@ -17,10 +17,22 @@ a { color: #2660A4 }
   text-align: right;
 }
 
+.container .box {
+  flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  align-items: center;
+}
+
+.container .box .h2 {
+  margin-bottom: 30px;
+}
+
 .container input[type="text"], input[type="password"] {
+  padding: 5px 10px;
   border: 1px solid #206252;
   border-radius: 5px;
-  padding: 5px 10px;
 }
 
 .container td {
@@ -76,33 +88,35 @@ a { color: #2660A4 }
 
 .navbar {
   background-color: #206252;
-  display: flex;
-  justify-content: flex-end;
   padding: 10px;
-}
-
-.navbar .logo {
-  float: left;
-  height: 30px;
-  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbar button {
   background-color: transparent;
   border: none;
   color: white;
-  font-size: 16px;
   cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 2px;
+  margin-right: 10px;
+}
+
+.navbar .logo {
+  height: 30px;
+  margin-left: 10px;
+  margin-top: 3px;
 }
 
 .signup-button {
   background-color: #206252;
-  border: none;
-  border-radius: 5px;
   color: white;
-  cursor: pointer;
-  font-size: 16px;
+  border: none;
   padding: 15px 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .signup-button a {
@@ -113,9 +127,4 @@ a { color: #2660A4 }
 .signup-button:hover {
   background-color: #3CB99A;
   transition: background-color 0.2s ease;
-}
-
-.user-header {
-  font-size: 30px;
-  margin-left: 50px;
 }
