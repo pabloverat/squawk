@@ -51,12 +51,12 @@ INSERT INTO users (user_id, username, password, is_admin) VALUES (277, 'CooperTr
 INSERT INTO users (user_id, username, password, is_admin) VALUES (278, 'MrBrownie', 'ob1canolli', 0);
 INSERT INTO users (user_id, username, password, is_admin) VALUES (279, 'EmmyMorris23', 'Skyline0723', 0);
 
-INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Can''t wait for the weekend!', NULL, 261);
-INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Adventures await just beyond the horizon.', NULL, 277);
-INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Nature never ceases to amaze me.', NULL, 258);
-INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Unleashing my creativity with every brushstroke.', NULL, 275);
-INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Feeling inspired to create some art today.', NULL, 263);
-INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Catching up on my favorite TV show.', NULL, 279);
+INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Can''t wait for the weekend!', 0, 261);
+INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Adventures await just beyond the horizon.', 0, 277);
+INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Nature never ceases to amaze me.', 0, 258);
+INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Unleashing my creativity with every brushstroke.', 0, 275);
+INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Feeling inspired to create some art today.', 0, 263);
+INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Catching up on my favorite TV show.', 0, 279);
 INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Finding joy in the simplest of things.', 0, 276);
 INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('Loved the painting you gave me!', 4, 272);
 INSERT INTO squawks (content, is_reply_to, user_id) VALUES ('OMG! Let''s hang out!', 1, 272);
