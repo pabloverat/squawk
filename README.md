@@ -2,6 +2,23 @@
 
 **SQUAWK** is a new social network toy developed by Tec de Monterrey students designed to be lightweight and helpful as a template when practicing webdev with Flask.
 
+###
+**Running application locally:**
+From the squawk folder, open a command prompt and execute the following command:  
+``python app.py``  
+then connect to localhost:5000
+
+**Running application on container**
+From the squawk folder, open a command prompt and execute the following commands:  
+``docker build -t squawk .``  
+``docker run -dp 5000:5000 squawk``  
+then connect to localhost:5000
+
+**Running tests**
+From the squawk folder, execute the following commands:  
+``python comment_tests.py``  
+``python login_tests.py``  
+``python squawk_tests.py``  
 
 ### Types of users
 

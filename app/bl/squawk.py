@@ -1,10 +1,4 @@
 class Squawk:
-  # def __init__(self, content, is_reply_to, user_id):
-  #   self.squawk_id = None
-  #   self.content = content
-  #   self.is_reply_to = is_reply_to
-  #   self.user_id = user_id
-  #   self.created = None
   
   def __init__(self, squawk_data):
     self.squawk_id = squawk_data[0]

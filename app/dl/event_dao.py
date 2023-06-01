@@ -10,7 +10,16 @@ class EventDAO:
     query = "INSERT INTO event (type_of_action, user_id) VALUES (?, ?)"
     values = (event.type_of_action, event.user_id)
     _ = self.DB.run_query(query, values)
-    
+  
+  def get_all(self):
+    query = "SELECT * FROM event;"
+    result = self.DB.run_query(query)
+    try:
+      data = result.fetchall()
+      return data
+    except:
+      return None
+  
   def delete(self, eventID):
     query = "DELETE FROM event WHERE event_id = ?"
     _ = self.DB.run_query(query, (eventID, ))

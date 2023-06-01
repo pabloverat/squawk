@@ -16,8 +16,8 @@ class EventService:
   def delete_event(self, eventID):
     self.eventDAO.delete(eventID)
 
-  def get_event(self, eventID):
-    pass
+  def get_events(self):
+    return self.eventDAO.get_all()
 
   def update_event(self, eventID, content):
     pass

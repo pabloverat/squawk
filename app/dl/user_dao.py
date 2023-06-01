@@ -10,12 +10,10 @@ class UserDAO:
     query="INSERT INTO users (username, password, is_admin) VALUES (?, ?, ?)"
     values = (user.username, user.password, 0)
     _ = self.DB.run_query(query,values)
-    # cursor.commit()
 
   def delete(self, user_id):
     query = "DELETE FROM users WHERE user_id = ?"
     _ = self.DB.run_query(query, (user_id, ))
-    # self.DB.commit()
 
   def get(self, userID):
     query = "SELECT * FROM users WHERE user_id = ?"
@@ -43,4 +41,3 @@ class UserDAO:
     query = "UPDATE users SET username = ?, password = ?, is_admin = ? WHERE user_id = ?"
     values = (user.username, user.password, user.is_admin, user.user_id)
     _ = self.DB.run_query(query, values)
-    # self.DB.commit()
