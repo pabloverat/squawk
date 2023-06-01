@@ -6,20 +6,20 @@
   </head>
   <body>
     <div class="navbar">
-      <img src="{{ url_for('static', filename='img/squawk_ad_long.png') }}" alt="Squawk Logo" class="logo">
+      <a href="{{ url_for('admin') }}"><img src="{{ url_for('static', filename='img/squawk_ad_long.png') }}" class="logo"></a>
     </div>
     <div class="container">
       <div class="box">
-        <h4>User With Most Actions:</h4>
-        <h2>Lorem ipsum</h2>
+        <h4>User With Most Actions Today:</h4>
+        <a href="{{url_for('user', user_id=active_user.user_id)}}"><h2>{{active_user.username}}, {{events_amount}}</h2></a>
       </div>
       <div class="box">
-        <h4>Most Commented Squawk:</h4>
-        <h2>Lorem ipsum</h2>
+        <h4>Most Commented Squawk Today:</h4>
+        <a href="{{url_for('thread',squawk_id=popular_squawk.squawk_id)}}"><h2>{{popular_squawk.content}}, {{replies_amount}}</h2></a>
       </div>
       <div class="box">
-        <h4>Amount of Users on App:</h4>
-        <h2>Lorem ipsum</h2>
+        <h4>Amount of Users on App Today:</h4>
+        <h2>{{todays_logins}}</h2>
       </div>
     </div>
   </body>

@@ -8,7 +8,7 @@
   <body>
     <div class="navbar">
       <a href="{{url_for('home')}}"><img src="{{ url_for('static', filename='img/squawk_long.png') }}" alt="Squawk Logo" class="logo"></a>
-      <button class="login-button">My Profile</button>
+      <a href="{{ url_for('user', user_id=user_id) }}"><button class="login-button">My Profile</button></a>
     </div>
     <h1 class="user-header">{{username}}</h1>
     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='squawk_basic.css') }}" />
     <title> New Squawk </title>
 </head>
 <body>
@@ -10,13 +10,16 @@
     <a href="{{ url_for('user', user_id=user_id) }}"><button class="login-button">My Profile</button></a>
   </div>
   <div class="container">
-    <form action="{{url_for('home')}}" method="POST">
-      <input id="content" type="text" placeholder="Your Squawk" value="{{request.form.content }}">
-      <input id="is_reply_to" type="hidden" value="{{is_reply_to}}"/>
-      <input type="submit" value="Post Squawk">
+    <form action="{{url_for('new')}}" method="POST">
+      <table>
+        <tr>
+          <td><input id="content" type="text" style="height: 120px; vertical-align: top; width: 200px;" placeholder="Your Squawk" name="content"></td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+          <td><input type="submit" value="Post Squawk"></td>
+          <td><input type="reset" value="Discard"></td>
+        <tr>
     </form>
-  <form>
-    <input type="button" value="Discard">
-  </form>
   </div>
 </body>

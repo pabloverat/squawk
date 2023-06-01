@@ -11,6 +11,7 @@
       <a href="{{ url_for('user', user_id=user_id) }}"><button class="login-button">My Profile</button></a>
     </div>
     <div class="board">
+      <a href="{{ url_for('new') }}"><button class="top-button">Squawk</button></a>
       {% for squawk, user, thread_info in squawks %}
       <div class="squawk">
         <h4>

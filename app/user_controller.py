@@ -20,6 +20,7 @@ def home():
   return render_template('home.html', squawks=squawks, user_id=user_id)
 
 def user(user_id):
+  current_user = session['user_id']
   squawks = []
   username = us.get_user(user_id).username
   last10 = ss.get_last(10,user_id)
@@ -29,4 +30,4 @@ def user(user_id):
     thread_info = list(zip(thread, thread_users))
     user = us.get_user(i.user_id).username
     squawks.append((i, user, thread_info))
-  return render_template('user.html', username=username, squawks=squawks)
+  return render_template('user.html', username=username, squawks=squawks, user_id=current_user)

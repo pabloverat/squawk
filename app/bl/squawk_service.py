@@ -9,7 +9,7 @@ class SquawkService:
   def create_squawk(self, content, is_reply_to, user_id):
     if len(content) > 300:
       raise ValueError("Error! El contenido del squawk excede el máximo de 300 caracteres.")
-    squawk = Squawk(content=content, is_reply_to=is_reply_to, user_id=user_id)
+    squawk = Squawk((None, content, is_reply_to, user_id, None))
     self.squawkDAO.create(squawk)
 
   def delete_squawk(self, squawk_id):
