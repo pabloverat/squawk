@@ -2,30 +2,29 @@
 
 **SQUAWK** is a new social network toy developed by Tec de Monterrey students designed to be lightweight and helpful as a template when practicing webdev with Flask.
 
-## Use
 
 ### Types of users
 
-- **User:**
-    - Could be any final user
-    - Is identified with a username
-    - Is authenticated with a simple password
-    - May publish short pieces of text (up to 300 characters) for all users to see. These texts could be in response to another.
-    
-- **Admin:** 
+**User:**
+- Could be any final user
+- Is identified with a username
+- Is authenticated with a simple password
+- May publish short pieces of text (up to 300 characters) for all users to see. These texts could be in response to another.
 
-## Architecture used
+**Admins:** 
+- Can do everything the user can
+- Can view event dashboard, where the following metrics are shown:
+    - Most popular squawk of the day
+    - Most active user of the day
+    - Amount of different users that have logged-in that day
 
-### MVC Layers
+# Architecture
 
-This organization is described by the next fragment of our project structure.
+MVC Layers. This organization is described by the next fragment of our project structure.
 
 ```
 SQUAWK APP
 └───app.py                  <-- Entry point and web controller
-└───admin_controller.py     <-- Web controller and routes
-└───squawk_controller.py    <-- Web controller and routes
-└───user_controller.py      <-- Web controller and routes
 │
 ├───bl                      <-- Business Layer
 │   └───event.py            <-- Unit class used throught
@@ -46,10 +45,15 @@ SQUAWK APP
 │   └───user_dao.py         <-- DAO access database
 │
 ├───static
-│   └───img                 <-- images
-│   └───css                 <-- graphic design
+│   └───img             <-- images
+│   └───css             <-- graphic design
 │
-├───templates               <-- html views 
+├───templates           <-- html views 
+│
+└───ui
+│   └───admin_controller.py     <-- Web controller and routes
+│   └───squawk_controller.py    <-- Web controller and routes
+│   └───user_controller.py      <-- Web controller and routes
 │
 └───utils
     └───database.py         <-- Database manager
@@ -57,13 +61,14 @@ SQUAWK APP
     └───schema.sql          <-- Database schema
 ```
 
-## Design patterns used
 
-### DAO
+# Design patterns used
+
+## DAO
 
 Data Access Object (DAO) Pattern is used to separate low level data accessing operations from high level business services and fits our architecture since MVC organizes the operations in business and data layers.
 
-### Singleton
+## Singleton
 
 Since we are using DAO for each of our services, it comes in handy to use singleton pattern when making a connection to the database so that when a connection already exists from some service, this is reused instead of creating a new one for another service. 
 
@@ -81,12 +86,11 @@ if getattr(self, 'connection', None) is None:
     self.connect()
 ```
 
+## Strategy
 
-### Strategy
+We use Strategy since the DBAuthStrategy class is a concrete implementation of the authentication strategy. It provides a specific implementation of the authenticate() method by interacting with a UserService object to perform the authentication process. This class represents one possible strategy for authenticating users.
 
-We use Strategy whenn
-
-### Builder
+## Builder
 
 We use Builder when creating reports for the dashboard
 
@@ -108,16 +112,20 @@ class EventBuilder:
     return Event(type_of_action=self.type_of_action, user_id=self.user_id)
 ```
 
-## SOLID Principles
+# SOLID Principles
 
-Single Responsibility Principle (SRP):
-The EventService class is responsible for creating, deleting, and retrieving events. It also includes methods for generating reports. Although it handles multiple operations, it can still be considered to have a single responsibility related to managing events and generating reports.
+*Single Responsibility Principle (SRP):*  
+The ``EventService`` class is responsible for creating, deleting, and retrieving events. It also includes methods for generating reports. Although it handles multiple operations, it can still be considered to have a single responsibility related to managing events and generating reports.  
 
-Open-Closed Principle (OCP):
-EventService class: The EventService class is open for extension because new methods can be added to it without modifying its existing code. However, it is not explicitly closed for modification since the methods get_event and update_event are placeholders and may require modification in the future. Therefore, it partially complies with OCP.
+*Open-Closed Principle (OCP):*  
+``EventService`` class: The ``EventService`` class is open for extension because new methods can be added to it without modifying its existing code. However, it is not explicitly closed for modification since the methods get_event and update_event are placeholders and may require modification in the future. Therefore, it partially complies with OCP.  
 
+*Liskov Substitution Principle (LSP):*  
+The ``DBAuthStrategy`` class is a subtype of the ``UserAuthStrategy`` abstract base class and inherits the authenticate method. It maintains the same method signature and behaves as expected. Therefore, it adheres to the LSP.  
 
-Dependency Inversion Principle (DIP):
-The EventService class depends on the EventDAO class, which is a low-level module responsible for data access. This adherence to DIP allows for easy substitution of different EventDAO implementations without modifying the EventService class. Therefore, it complies with DIP.
+*Interface Segregation Principle (ISP):*  
+The ``UserAuthStrategy`` abstract base class defines a specific interface with a single method, authenticate. It provides a minimal and focused interface for implementing different authentication strategies. This follows the ISP by not imposing unnecessary methods on its subclasses.  
 
-In summary, the code partially complies with SRP, OCP, and DIP, but it does not exhibit LSP or ISP since the relevant information is not present.
+*Dependency Inversion Principle (DIP):*  
+The ``EventService`` class depends on the ``EventDAO`` class, which is a low-level module responsible for data access. This adherence to DIP allows for easy substitution of different ``EventDAO`` implementations without modifying the ``EventService`` class. Therefore, it complies with DIP. 
+
