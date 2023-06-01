@@ -2,10 +2,17 @@ import sqlite3
 
 
 class Database:
+  __instance = None
+
+  def __new__(self):
+    if self.__instance is None:
+      self.__instance = super().__new__(self)
+    return self.__instance
+
   def __init__(self):
-    self.DB = "app/utils/db.sqlite"
-    self.connection = None
-    self.connect()
+    if getattr(self, 'connection', None) is None:
+      self.DB = "app/utils/db.sqlite"
+      self.connect()
 
   def connect(self):
     try:

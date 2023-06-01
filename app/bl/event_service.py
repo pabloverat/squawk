@@ -1,4 +1,4 @@
-from bl.event import Event
+from bl.event_builder import EventBuilder
 from dl.event_dao import EventDAO
 
 
@@ -7,7 +7,10 @@ class EventService:
     self.eventDAO = EventDAO()
 
   def create_event(self, type_of_action, userID):
-    event = Event(type_of_action=type_of_action, user_id=userID)
+    event = EventBuilder() \
+      .with_type_of_action(type_of_action) \
+      .with_user_id(userID) \
+      .build()
     self.eventDAO.create(event)
 
   def delete_event(self, eventID):

@@ -12,7 +12,7 @@ class Event:
     return self.type_of_action
 
   def get_user_id(self):
-    return self.user_user_id
+    return self.user_id
 
   def get_timestamp(self):
     return self.created
