@@ -11,11 +11,19 @@
     <div class="container">
       <div class="box">
         <h4>User With Most Actions Today:</h4>
+        {% if active_user %}
         <a href="{{url_for('user', user_id=active_user.user_id)}}"><h2>{{active_user.username}}, {{events_amount}}</h2></a>
+        {% else %}
+        <h2>No user has perfomred actions today</h2>
+        {% endif %}
       </div>
       <div class="box">
         <h4>Most Commented Squawk Today:</h4>
+        {% if popular_squawk %}
         <a href="{{url_for('thread',squawk_id=popular_squawk.squawk_id)}}"><h2>{{popular_squawk.content}}, {{replies_amount}}</h2></a>
+        {% else %}
+        <h2>No squawk from today has replies</h2>
+        {% endif %}
       </div>
       <div class="box">
         <h4>Amount of Users on App Today:</h4>

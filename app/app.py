@@ -23,7 +23,7 @@ app.add_url_rule('/thread/<int:squawk_id>', view_func=squawk_controller.thread, 
 
 # Admin controller routes
 app.add_url_rule('/admin', view_func=admin_controller.admin, methods=["GET", "POST"])
-app.add_url_rule('/dashboard', view_func=admin_controller.dashboard, methods=["GET", "POST"])
+app.add_url_rule('/dashboard', view_func=admin_controller.dashboard, methods=["GET"])
 
 if __name__ == '__main__':
   app.run(use_reloader=True)
